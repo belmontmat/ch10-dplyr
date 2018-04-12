@@ -43,8 +43,10 @@ specific_worst_id <- select(specific_worst, id)
 # of that make in that year.
 # You'll need to filter more (and do some selecting)!
 make_year_filter <- function(make_choice, year_choice){
-  
+  filtered <- filter(vehicles, make == make_choice, year == year_choice) %>%
+  filter(hwy == max(hwy)) %>%
+  select(model)
 }
 
 # What was the most efficient Honda model of 1995?
-
+check <- make_year_filter("Honda", 1995)
